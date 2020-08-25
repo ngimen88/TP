@@ -1,15 +1,34 @@
 <?php
+
 $servername = "localhost";
-$username = "root";
-$password = "root";
+$username = "lcars";
+$password = "NCC1701D";
+$dbname = "ingenieria";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password);
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
+// Error de conexión
 if ($conn->connect_error) {
   die("Error de conexion: " . $conn->connect_error);
 } 
 
-echo "Conexión OK";
+$sql = "select alumnos.legajo 'legajo', 
+               alumnos.apellido 'apellido', 
+               modulos.nom_modulo 'materia', 
+               notas.nota 'nota'
+        from   alumnos, 
+               modulos, 
+               notas 
+        where  alumnos.legajo=notas.legajo 
+           and modulos.cod_modulo = notas.cod_modulo;";
+
+
+if ($result = $conn->query($sql)) {
+  
+  while($row = $result->fetch_assoc()) {
+    echo "legajo: " . $row["legajo"]. " - Apellido: " . $row["apellido"]. " " . $row["materia"]. " " . $row["nota"]."<br>";
+  }
+}
+
+$conn->close();
 ?>
