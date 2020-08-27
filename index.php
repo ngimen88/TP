@@ -22,10 +22,9 @@ $sql = "select alumnos.legajo 'legajo',
         where  alumnos.legajo=notas.legajo 
            and modulos.cod_modulo = notas.cod_modulo;";
 
-
 if ($result = $conn->query($sql)) {
   
-  while($row = $result->fetch_assoc()) {
+while($row = $result->fetch_assoc()) {
     echo "legajo: " . $row["legajo"]. " - Apellido: " . $row["apellido"]. " " . $row["materia"]. " " . $row["nota"]."<br>";
   }
 }
