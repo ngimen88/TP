@@ -1,6 +1,6 @@
 # Archivos para el TP de computación aplicada.
 
-## ```clave_publica_pablo.pub```
+## ```clave_publica_sonda.pub``` y ```clave_privada_sonda```
 
 Corresponde al punto 1 (SSH), de la sección Servidores. Debe utilizarse el comando ```ssh-copy-id``` para poder instalar la clave pública en el servidor-
 
